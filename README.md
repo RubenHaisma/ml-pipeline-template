@@ -74,6 +74,16 @@ evaluation, serving), keep the CLI / output / tracking shell. The three domain
 repos linked above show exactly that, for RL fine-tuning, computer vision, and
 classic ML.
 
+## Agent-friendly by design
+
+Every command is non-interactive, emits a single JSON object with `--json`, and returns a load-bearing exit code — so AI coding agents (**Codex, Claude Code, Cursor, Copilot, Windsurf, …**) and plain scripts can drive the full train → eval → serve loop and parse results with no TTY, no UI, no screen-scraping.
+
+```bash
+mlt train configs/iris.yaml --json   # -> {"ok": true, "metrics": {...}}   exit 0
+```
+
+Agent instructions live in [`AGENTS.md`](AGENTS.md) — the [cross-tool standard](https://agents.md). `CLAUDE.md` is a symlink to it, so every tool reads one source of truth.
+
 ## CI does more than lint
 
 Most repos' CI checks that the code *parses*. This one checks that the *pipeline works* — three things beyond lint + tests, all stdlib, no extra deps:
