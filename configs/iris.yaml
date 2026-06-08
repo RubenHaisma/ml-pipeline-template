@@ -1,0 +1,9 @@
+# Reference train config. Copy this per experiment; one config = one run shape.
+name: iris-rf
+dataset: iris
+model: random_forest      # random_forest | logistic
+params:
+  n_estimators: 200
+  max_depth: 4
+test_size: 0.2
+seed: 42
